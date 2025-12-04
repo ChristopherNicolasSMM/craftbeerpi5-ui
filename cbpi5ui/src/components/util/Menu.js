@@ -1,57 +1,58 @@
+/**
+ * Componente de Menu Lateral
+ * 
+ * Este componente renderiza o menu lateral usando a configuração centralizada de rotas.
+ * Para adicionar um novo item ao menu, edite o arquivo src/config/routes.js
+ */
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import BallotIcon from '@material-ui/icons/Ballot';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import DeveloperBoardIcon from '@material-ui/icons/DeveloperBoard';
-import InfoIcon from '@material-ui/icons/Info';
-import PowerIcon from '@material-ui/icons/Power';
-import SettingsIcon from '@material-ui/icons/Settings';
-import TimelineIcon from '@material-ui/icons/Timeline';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import ComputerIcon from '@material-ui/icons/Computer';
 import React from 'react';
-import {
+import { useHistory } from "react-router-dom";
+import { menuItems } from '../../config/routes';
 
-    useHistory
-} from "react-router-dom";
-
-
-const MenuItem = ({ onClose, label, path = "/", children }) => {
+/**
+ * Componente de item do menu
+ */
+const MenuItem = ({ onClose, label, path = "/", icon: Icon }) => {
     const history = useHistory();
 
     const goTo = (key) => {
         history.push(key);
-        onClose()
-    }
+        onClose();
+    };
 
-    return <><ListItem button onClick={()=>goTo(path)}>
-        <ListItemIcon>
-            {children}
-        </ListItemIcon>
-        <ListItemText primary={label} />
-     
-    </ListItem>
-    
-    </>
-}
+    return (
+        <ListItem button onClick={() => goTo(path)}>
+            <ListItemIcon>
+                <Icon />
+            </ListItemIcon>
+            <ListItemText primary={label} />
+        </ListItem>
+    );
+};
 
+/**
+ * Componente principal do menu lateral
+ * Renderiza todos os itens do menu baseado na configuração centralizada
+ */
+const Menu = ({ onClose }) => {
+    return (
+        <List>
+            {menuItems.map((route) => (
+                <MenuItem
+                    key={route.path}
+                    onClose={onClose}
+                    label={route.menuLabel}
+                    path={route.path}
+                    icon={route.menuIcon}
+                />
+            ))}
+        </List>
+    );
+};
 
-const Menu = ({onClose}) => {
-    return <List>
-        <MenuItem onClose={onClose} label="Dashboard" ><DashboardIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="Mash Profile" path="/mashprofile"><BallotIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="Fermenter Profile" path="/fermenterprofile"><BallotIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="Hardware" path="/hardware"><DeveloperBoardIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="Settings" path="/settings"><SettingsIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="Analytics" path="/charting"><TimelineIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="Plugins" path="/plugins"><PowerIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="Recipe Upload" path="/upload"><CloudUploadIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="System" path="/system"><ComputerIcon /></MenuItem>
-        <MenuItem onClose={onClose} label="About" path="/about"><InfoIcon /></MenuItem>
-    </List>
-}
-
-export default Menu
+export default Menu;
 

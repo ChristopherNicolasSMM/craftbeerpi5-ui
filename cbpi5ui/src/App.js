@@ -1,3 +1,14 @@
+/**
+ * Componente Principal da Aplicação CraftBeerPi 5
+ * 
+ * Este componente gerencia:
+ * - Layout principal (AppBar, Drawer, Content)
+ * - Roteamento usando configuração centralizada
+ * - Navegação e menu lateral
+ * 
+ * Para adicionar novas rotas, edite src/config/routes.js
+ */
+
 import { Container } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
@@ -9,42 +20,28 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import React from "react";
+import React, { useState } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import About from "./components/about";
-import Upload from "./components/upload";
-import CBPiSystem from "./components/system";
-import {Dashboard2 , FixDashboard} from "./components/dashboard/Dashboard";
-import Hardware from "./components/hardware";
-import ActorForm from "./components/hardware/ActorForm";
-import KettleForm from "./components/hardware/KettleForm";
-import FermenterForm from "./components/hardware/FermenterForm";
-import SensorForm from "./components/hardware/SensorForm";
-import Plugins from "./components/plugins";
-import MashProfile from "./components/mashprofile";
-import FermenterProfile from "./components/fermenterprofile";
-import Settings from "./components/settings";
 import Menu from "./components/util/Menu";
 import PrivateRoute from "./components/util/PrivateRoute";
 import logo from "./images/cbpi_no_border.png";
-import StepForm from "./components/mashprofile/StepForm";
-import FermenterStepForm from "./components/fermenterprofile/FermenterStepForm";
-import Recipes from "./components/recipes";
-import FermenterRecipes from "./components/fermenterrecipes";
-import RecipeEditor from "./components/recipes/RecipeEditor";
-import FermenterRecipeEditor from "./components/fermenterrecipes/FermenterRecipeEditor";
-import { Charting } from "./components/charting";
+import { routes } from "./config/routes";
 
+// Largura do drawer (menu lateral)
+const drawerWidth = 280;
 
-const drawerWidth = 240;
-
+/**
+ * Estilos do componente usando Material-UI makeStyles
+ */
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    minHeight: "100vh",
+    backgroundColor: theme.palette.background.default,
   },
   toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
+    paddingRight: 24, // Mantém padding direito quando drawer está fechado
   },
   toolbarIcon: {
     display: "flex",
@@ -55,10 +52,12 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#1976d2',
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    boxShadow: theme.shadows[4],
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -70,12 +69,21 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: 36,
+    color: 'inherit',
   },
   menuButtonHidden: {
     display: "none",
   },
   title: {
     flexGrow: 1,
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  logo: {
+    marginRight: 12,
+    height: 32,
+    width: "auto",
   },
   drawerPaper: {
     position: "relative",
@@ -85,6 +93,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#f5f5f5',
+    borderRight: `1px solid ${theme.palette.divider}`,
   },
   drawerPaperClose: {
     overflowX: "hidden",
@@ -100,25 +110,15 @@ const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-
     height: "100vh",
     overflow: "auto",
+    backgroundColor: theme.palette.background.default,
   },
   container: {
-    paddingTop: theme.spacing(1),
+    paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column",
-  },
-  fixedHeight: {
-    height: 240,
-  },
-  dashoard: {
-    data: theme.mixins.toolbar,
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3),
   },
   snack: {
     position: "absolute",
@@ -130,11 +130,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Componente principal da aplicação
+ */
 const CraftBeerPiApp = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  /**
+   * Abre o drawer (menu lateral)
+   */
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setDrawerOpen(true);
+  };
+
+  /**
+   * Fecha o drawer (menu lateral)
+   */
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
   };
 
   return (
@@ -143,14 +157,28 @@ const CraftBeerPiApp = () => {
       <Router>
         <Switch>
           <PrivateRoute path="/">
-            <AppBar position="absolute" className={classes.appBar}>
+            {/* AppBar - Barra superior */}
+            <AppBar 
+              position="absolute" 
+              className={`${classes.appBar} ${drawerOpen ? classes.appBarShift : ''}`}
+            >
               <Toolbar className={classes.toolbar}>
-                <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} className={classes.menuButton}>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  className={classes.menuButton}
+                >
                   <MenuIcon />
                 </IconButton>
-                <div className={classes.title} style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
-                  <img width={30} src={logo} style={{ marginRight: 10 }} />
-                  <Typography component="h1" variant="h4" color="inherit" noWrap>
+                <div className={classes.title}>
+                  <img 
+                    src={logo} 
+                    alt="CraftBeerPi Logo" 
+                    className={classes.logo}
+                  />
+                  <Typography component="h1" variant="h5" color="inherit" noWrap>
                     CraftBeerPi 5.0
                   </Typography>
                 </div>
@@ -161,121 +189,46 @@ const CraftBeerPiApp = () => {
                 </IconButton>
               </Toolbar>
             </AppBar>
-            <Drawer open={open} onClose={() => setOpen(false)}>
-              <Menu onClose={() => setOpen(false)} />
+
+            {/* Drawer - Menu lateral */}
+            <Drawer
+              variant="persistent"
+              open={drawerOpen}
+              onClose={handleDrawerClose}
+              classes={{
+                paper: drawerOpen ? classes.drawerPaper : classes.drawerPaperClose,
+              }}
+            >
+              <div className={classes.toolbarIcon}>
+                <IconButton onClick={handleDrawerClose}>
+                  <MenuIcon />
+                </IconButton>
+              </div>
+              <Menu onClose={handleDrawerClose} />
             </Drawer>
 
+            {/* Conteúdo principal */}
             <main className={classes.content}>
               <div className={classes.appBarSpacer} />
-
               <Container maxWidth={false} className={classes.container}>
-                <Route exact path="/">
-                  <Dashboard2 />
-                </Route>
-
-                <Route exact path="/fixdash/:dashboardid">
-                  <FixDashboard />
-                </Route>
-
-                <Container maxWidth="lg">
-                  <Route path="/plugins">
-                    <Plugins />
-                  </Route>
-                  <Route path="/about">
-                    <About />
-                  </Route>
-                  <Route path="/upload">
-                    <Upload />
-                  </Route>
-                  <Route path="/system">
-                    <CBPiSystem />
-                  </Route>
-                  <Route path="/hardware">
-                    <Hardware />
-                  </Route>
-                  <Route exact path="/kettle/:id">
-                    <KettleForm />
-                  </Route>
-
-                  <Route exact path="/kettle">
-                    <KettleForm />
-                  </Route>
-
-                  <Route exact path="/fermenter/:id">
-                    <FermenterForm />
-                  </Route>
-
-                  <Route exact path="/fermenter">
-                    <FermenterForm />
-                  </Route>
-
-                  <Route exact path="/actor/:id">
-                    <ActorForm />
-                  </Route>
-                  <Route exact path="/actor">
-                    <ActorForm />
-                  </Route>
-                  <Route exact path="/sensor/:id">
-                    <SensorForm />
-                  </Route>
-                  <Route exact path="/sensor">
-                    <SensorForm />
-                  </Route>
-                  <Route exact path="/settings">
-                    <Settings />
-                  </Route>
-                  <Route exact path="/mashprofile">
-                    <MashProfile/>
-                  </Route>
-                  <Route exact path="/fermenterprofile">
-                    <FermenterProfile/>
-                  </Route>
-                  <Route exact path="/fermenterprofile/:fermenterid">
-                    <FermenterProfile/>
-                  </Route>
-                  <Route exact path="/recipes">
-                    <Recipes/>
-                  </Route>
-                  <Route exact path="/fermenterrecipes">
-                    <FermenterRecipes/>
-                  </Route>
-                  <Route exact path="/recipe/:id">
-                    <RecipeEditor/>
-                  </Route>
-                  <Route exact path="/fermenterrecipe/:id">
-                    <FermenterRecipeEditor/>
-                  </Route>
-                  <Route exact path="/step">
-                    <StepForm/>
-                  </Route>
-                  <Route exact path="/fermenterstep">
-                    <FermenterStepForm/>
-                  </Route>
-                  <Route exact path="/fermenterstep/:fermenterid">
-                    <FermenterStepForm/>
-                  </Route>
-                  <Route exact path="/step/:id">
-                    <StepForm/>
-                  </Route>
-                  <Route exact path="/fermenterstep/:id/:fermenterid">
-                    <FermenterStepForm/>
-                  </Route>
-                  <Route exact path="/charting">
-                    <Charting/>
-                  </Route>                  
-                </Container>
+                {/* Renderiza todas as rotas da configuração centralizada */}
+                <Switch>
+                  {routes.map((route) => (
+                    <Route
+                      key={route.path}
+                      exact={route.exact !== false}
+                      path={route.path}
+                      component={route.component}
+                    />
+                  ))}
+                </Switch>
               </Container>
             </main>
           </PrivateRoute>
         </Switch>
-        
       </Router>
     </div>
   );
 };
 
 export default CraftBeerPiApp;
-
-/*
-
-*/
