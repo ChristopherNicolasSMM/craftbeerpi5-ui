@@ -561,6 +561,44 @@ history.push('/nova-pagina');
 
 ## 📝 Histórico de Atualizações
 
+### 2024-12-04 - Correção de Compatibilidade Node.js
+
+#### Mudanças
+- ✅ Criados scripts PowerShell e Bash para Windows e Linux/Mac
+- ✅ Configurado `--openssl-legacy-provider` para compatibilidade com Node.js 17+
+- ✅ Resolvido erro `error:0308010C:digital envelope routines::unsupported`
+- ✅ Removida dependência não utilizada `@material-ui/x-grid-data-generator`
+- ✅ Criado arquivo `.npmrc` com `legacy-peer-deps=true`
+- ✅ Adicionado `cross-env` como dependência de desenvolvimento
+
+#### Arquivos Criados
+- `scripts/start.ps1` - Script PowerShell para Windows
+- `scripts/build.ps1` - Script PowerShell para build no Windows
+- `scripts/start.sh` - Script Bash para Linux/Mac
+- `scripts/build.sh` - Script Bash para build no Linux/Mac
+- `.npmrc` - Configuração automática de legacy-peer-deps
+
+#### Arquivos Modificados
+- `package.json` - Scripts adicionados: `start:win`, `start:unix`, `build:win`, `build:unix`
+- `src/docs/GUIA_EXECUCAO_BUILD.md` - Documentação completa atualizada
+- `README.md` - Instruções atualizadas
+
+#### Como Usar
+
+**Windows (PowerShell):**
+```bash
+npm run start:win   # Inicia servidor de desenvolvimento
+npm run build:win   # Faz build de produção
+```
+
+**Linux/Mac:**
+```bash
+npm run start:unix  # Inicia servidor de desenvolvimento
+npm run build:unix  # Faz build de produção
+```
+
+**Nota:** O projeto agora é totalmente compatível com Node.js 17, 18, 19, 20, 21 e 22. Use os scripts específicos do seu sistema operacional para garantir compatibilidade.
+
 ### 2024 - Migração CraftBeerPi 4 → 5
 
 #### Atualizações de Nomenclatura
@@ -674,16 +712,135 @@ const { state } = useCBPi();
 
 ---
 
+## 🔧 Troubleshooting
+
+### Problema: `react-scripts` não é reconhecido como comando
+
+**Sintoma:**
+```
+'react-scripts' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+```
+
+**Causa:**
+- O `react-scripts` não está instalado ou a versão no `package.json` está incorreta
+- As dependências não foram instaladas corretamente
+
+**Solução:**
+1. Verifique se a versão do `react-scripts` no `package.json` está correta:
+   ```json
+   "react-scripts": "^4.0.3"
+   ```
+   ⚠️ **NÃO** use `^0.0.0` ou versões inválidas.
+
+2. Reinstale as dependências:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+3. Se o problema persistir, limpe o cache e reinstale:
+   ```bash
+   rm -rf node_modules package-lock.json
+   npm install --legacy-peer-deps
+   ```
+
+### Problema: Erro OpenSSL com Node.js 17+
+
+**Sintoma:**
+```
+Error: error:0308010C:digital envelope routines::unsupported
+```
+
+**Solução:**
+Use os scripts fornecidos que configuram automaticamente o `NODE_OPTIONS`:
+- Windows: `npm run start:win` ou `npm run build:win`
+- Linux/Mac: `npm run start:unix` ou `npm run build:unix`
+
+Ou configure manualmente:
+```bash
+# Windows PowerShell
+$env:NODE_OPTIONS="--openssl-legacy-provider"
+npm start
+
+# Linux/Mac
+export NODE_OPTIONS=--openssl-legacy-provider
+npm start
+```
+
+### Problema: Conflitos de dependências peer
+
+**Sintoma:**
+```
+npm error code ERESOLVE
+npm error peer dep missing
+```
+
+**Solução:**
+O arquivo `.npmrc` já está configurado com `legacy-peer-deps=true`. Se ainda houver problemas:
+```bash
+npm install --legacy-peer-deps
+```
+
+### Problema: Erro de compilação com `plotly.js` - "Unexpected token"
+
+**Sintoma:**
+```
+Failed to compile.
+./node_modules/plotly.js/src/components/fx/hover.js 1401:14
+Module parse failed: Unexpected token (1401:14)
+>   if (d.trace?.hoverlabel?.split) d.hovertemplate = '';
+```
+
+**Causa:**
+- O `plotly.js` foi atualizado para uma versão muito nova (3.x) que usa sintaxe moderna (operador de encadeamento opcional `?.`)
+- O `react-scripts 4.0.3` usa uma versão antiga do Babel que não suporta essa sintaxe
+- Incompatibilidade entre versões modernas de bibliotecas e o build system antigo
+
+**Solução:**
+1. **Mantenha as versões originais compatíveis:**
+   ```json
+   "plotly.js": "^1.58.5",
+   "axios": "^0.21.1",
+   "react-scripts": "^4.0.3"
+   ```
+
+2. **⚠️ IMPORTANTE:** Não atualize essas dependências sem atualizar também o `react-scripts`:
+   - `plotly.js` 3.x requer Babel moderno (react-scripts 5+)
+   - `axios` 1.x pode ter breaking changes
+   - Atualizar apenas uma dependência pode quebrar a compilação
+
+3. Se precisar atualizar, faça uma atualização completa:
+   - Atualize `react-scripts` para versão 5.x
+   - Atualize todas as dependências relacionadas
+   - Teste cuidadosamente todas as funcionalidades
+
+4. Para reverter versões atualizadas incorretamente:
+   ```bash
+   # Edite o package.json e reverta as versões
+   # Depois reinstale:
+   npm install --legacy-peer-deps
+   ```
+
+**Versões Testadas e Compatíveis:**
+- ✅ `react-scripts`: `^4.0.3`
+- ✅ `plotly.js`: `^1.58.5`
+- ✅ `axios`: `^0.21.1`
+- ✅ `react`: `^17.0.2`
+- ✅ `react-dom`: `^17.0.1`
+
+---
+
 ## 📞 Suporte
 
 Para dúvidas ou problemas:
 1. Consulte `docs/ADICIONAR_PAGINAS.md` para guias detalhados
 2. Verifique os componentes existentes como referência
 3. Consulte a documentação do Material-UI
+4. Verifique a seção [Troubleshooting](#-troubleshooting) acima
 
 ---
 
 **Mantido por:** Equipe CraftBeerPi 5  
-**Versão do Documento:** 1.0  
+**Versão do Documento:** 1.1  
 **Última Revisão:** 2024
 

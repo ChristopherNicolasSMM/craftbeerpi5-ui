@@ -4,7 +4,21 @@ Bem-vindo à documentação do CraftBeerPi 5 UI. Esta pasta contém toda a docum
 
 ## 📚 Documentos Disponíveis
 
-### 1. [CHANGELOG_V4_TO_V5.md](./CHANGELOG_V4_TO_V5.md)
+### 1. [GUIA_EXECUCAO_BUILD.md](./GUIA_EXECUCAO_BUILD.md) ⭐ **NOVO**
+**Guia completo de execução e build**
+
+Este guia contém:
+- ✅ Como instalar e configurar o ambiente
+- ✅ Como executar em modo desenvolvimento
+- ✅ Como fazer build para produção
+- ✅ Como instalar como plugin Python
+- ✅ Como empacotar para distribuição
+- ✅ Troubleshooting completo
+- ✅ Checklist de deploy
+
+**👉 Comece por aqui se é sua primeira vez no projeto!**
+
+### 2. [CHANGELOG_V4_TO_V5.md](./CHANGELOG_V4_TO_V5.md)
 **Documento principal de atualizações e mudanças**
 
 Este é o documento principal que contém:
@@ -17,7 +31,7 @@ Este é o documento principal que contém:
 
 **👉 Este documento é atualizado a cada nova mudança ou melhoria no projeto.**
 
-### 2. [ADICIONAR_PAGINAS.md](./ADICIONAR_PAGINAS.md)
+### 3. [ADICIONAR_PAGINAS.md](./ADICIONAR_PAGINAS.md)
 **Guia rápido para adicionar novas páginas**
 
 Guia passo a passo focado especificamente em:
@@ -32,9 +46,10 @@ Guia passo a passo focado especificamente em:
 
 ### Para Desenvolvedores Novos
 
-1. Leia primeiro o [CHANGELOG_V4_TO_V5.md](./CHANGELOG_V4_TO_V5.md) para entender as mudanças
-2. Consulte [ADICIONAR_PAGINAS.md](./ADICIONAR_PAGINAS.md) para criar sua primeira página
-3. Use os componentes existentes como referência
+1. **Primeiro passo:** Leia [GUIA_EXECUCAO_BUILD.md](./GUIA_EXECUCAO_BUILD.md) para configurar o ambiente
+2. **Segundo passo:** Leia [CHANGELOG_V4_TO_V5.md](./CHANGELOG_V4_TO_V5.md) para entender as mudanças
+3. **Terceiro passo:** Consulte [ADICIONAR_PAGINAS.md](./ADICIONAR_PAGINAS.md) para criar sua primeira página
+4. Use os componentes existentes como referência
 
 ### Para Adicionar uma Nova Página
 
@@ -43,6 +58,14 @@ Guia passo a passo focado especificamente em:
 3. Pronto! A página estará disponível
 
 Veja o guia completo em [ADICIONAR_PAGINAS.md](./ADICIONAR_PAGINAS.md)
+
+### Para Executar o Projeto
+
+1. Instale as dependências: `npm install` (na pasta `cbpi5ui/`)
+2. Execute em desenvolvimento: `npm start`
+3. Acesse: `http://localhost:3000`
+
+Veja o guia completo em [GUIA_EXECUCAO_BUILD.md](./GUIA_EXECUCAO_BUILD.md)
 
 ### Para Adicionar uma Nova Funcionalidade
 

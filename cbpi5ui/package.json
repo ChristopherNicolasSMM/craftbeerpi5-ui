@@ -6,7 +6,11 @@
   "homepage": "./",
   "scripts": {
     "start": "react-scripts --max-old-space-size=4096 start",
+    "start:win": "powershell -ExecutionPolicy Bypass -File ./scripts/start.ps1",
+    "start:unix": "bash ./scripts/start.sh",
     "build": "react-scripts --expose-gc --max-old-space-size=4096 build",
+    "build:win": "powershell -ExecutionPolicy Bypass -File ./scripts/build.ps1",
+    "build:unix": "bash ./scripts/build.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -18,7 +22,6 @@
     "@material-ui/data-grid": "^4.0.0-alpha.14",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
-    "@material-ui/x-grid-data-generator": "^4.0.0-alpha.14",
     "@mui/icons-material": "^5.4.1",
     "@mui/lab": "^5.0.0-alpha.69",
     "@mui/material": "^5.4.1",
@@ -67,5 +70,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }
