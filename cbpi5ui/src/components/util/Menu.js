@@ -21,13 +21,15 @@ const MenuItem = ({ onClose, label, path = "/", icon: Icon }) => {
 
     const goTo = (key) => {
         history.push(key);
-        onClose();
+        if (onClose) {
+            onClose();
+        }
     };
 
     return (
         <ListItem button onClick={() => goTo(path)}>
             <ListItemIcon>
-                <Icon />
+                {Icon ? <Icon /> : null}
             </ListItemIcon>
             <ListItemText primary={label} />
         </ListItem>
@@ -39,17 +41,37 @@ const MenuItem = ({ onClose, label, path = "/", icon: Icon }) => {
  * Renderiza todos os itens do menu baseado na configuração centralizada
  */
 const Menu = ({ onClose }) => {
+    // Garante que menuItems existe e é um array
+    if (!menuItems || !Array.isArray(menuItems) || menuItems.length === 0) {
+        return (
+            <List>
+                <ListItem>
+                    <ListItemText primary="Nenhum item de menu disponível" />
+                </ListItem>
+            </List>
+        );
+    }
+
     return (
         <List>
-            {menuItems.map((route) => (
-                <MenuItem
-                    key={route.path}
-                    onClose={onClose}
-                    label={route.menuLabel}
-                    path={route.path}
-                    icon={route.menuIcon}
-                />
-            ))}
+            {menuItems.map((route, index) => {
+                // Valida se a rota tem as propriedades necessárias
+                if (!route.menuLabel || !route.path) {
+                    return null;
+                }
+
+                const IconComponent = route.menuIcon;
+                
+                return (
+                    <MenuItem
+                        key={route.path || `menu-item-${index}`}
+                        onClose={onClose}
+                        label={route.menuLabel}
+                        path={route.path}
+                        icon={IconComponent}
+                    />
+                );
+            })}
         </List>
     );
 };

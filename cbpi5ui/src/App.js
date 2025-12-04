@@ -135,7 +135,8 @@ const useStyles = makeStyles((theme) => ({
  */
 const CraftBeerPiApp = () => {
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  // Inicia com o drawer aberto para melhor UX
+  const [drawerOpen, setDrawerOpen] = useState(true);
 
   /**
    * Abre o drawer (menu lateral)
@@ -213,14 +214,21 @@ const CraftBeerPiApp = () => {
               <Container maxWidth={false} className={classes.container}>
                 {/* Renderiza todas as rotas da configuração centralizada */}
                 <Switch>
-                  {routes.map((route) => (
-                    <Route
-                      key={route.path}
-                      exact={route.exact !== false}
-                      path={route.path}
-                      component={route.component}
-                    />
-                  ))}
+                  {routes.map((route, index) => {
+                    // Valida se a rota tem componente
+                    if (!route.component) {
+                      console.warn(`App: Rota sem componente no índice ${index}:`, route);
+                      return null;
+                    }
+                    return (
+                      <Route
+                        key={route.path || `route-${index}`}
+                        exact={route.exact !== false}
+                        path={route.path}
+                        component={route.component}
+                      />
+                    );
+                  })}
                 </Switch>
               </Container>
             </main>
