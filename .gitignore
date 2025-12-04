@@ -1,6 +1,6 @@
 *.pyc
 dist
-cbpi4-ui-plugin/src/node_modules/
+cbpi5-ui-plugin/src/node_modules/
 .idea
 *.egg-info
 venv

@@ -4,7 +4,7 @@ import re
 
 
 with open(os.path.join(os.path.abspath(os.path.dirname(
-        __file__)), 'cbpi4ui', 'version.py'), 'r', encoding='latin1') as fp:
+        __file__)), 'cbpi5ui', 'version.py'), 'r', encoding='latin1') as fp:
     try:
         match = re.search('.*\"(.*)\"', fp.readline())
         version = match.group(1)
@@ -14,7 +14,7 @@ with open(os.path.join(os.path.abspath(os.path.dirname(
 
 print(version)
 
-setup(name='cbpi4ui',
+setup(name='cbpi5ui',
       version=version,
       description='CraftBeerPi User Interface',
       author='Manuel Fritsch',
@@ -24,6 +24,6 @@ setup(name='cbpi4ui',
       package_data={
         # If any package contains *.txt or *.rst files, include them:
       '': ['*.txt', '*.rst', '*.yaml'],
-      'cbpi4-ui-plugin': ['*','*.txt', '*.rst', '*.yaml']},
-      packages=['cbpi4ui'],
+      'cbpi5-ui-plugin': ['*','*.txt', '*.rst', '*.yaml']},
+      packages=['cbpi5ui'],
      )

@@ -35,7 +35,7 @@ const backupConfig = (callback_susscess = () => { }, callback_failed = () => { }
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.setAttribute('download', 'cbpi4_config.zip'); //any other extension
+      link.setAttribute('download', 'cbpi5_config.zip'); //any other extension
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -59,7 +59,7 @@ const downloadlog = (logtime, callback_susscess = () => { }, callback_failed = (
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.setAttribute('download', 'cbpi4_log.zip'); //any other extension
+      link.setAttribute('download', 'cbpi5_log.zip'); //any other extension
       document.body.appendChild(link);
       link.click();
       link.remove();
