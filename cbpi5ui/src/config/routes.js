@@ -26,7 +26,6 @@ import PowerIcon from '@material-ui/icons/Power';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import ComputerIcon from '@material-ui/icons/Computer';
 import InfoIcon from '@material-ui/icons/Info';
-
 // Importações dos componentes
 import About from '../components/about';
 import Upload from '../components/upload';
