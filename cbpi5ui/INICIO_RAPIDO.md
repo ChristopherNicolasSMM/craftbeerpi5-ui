@@ -5,7 +5,7 @@ Guia rápido para começar a desenvolver no CraftBeerPi 5 UI.
 ## ⚡ Comandos Essenciais
 
 ### Windows (PowerShell) - Node.js 17+
-
+ 
 ```powershell
 # 1. Instalar dependências
 npm install
