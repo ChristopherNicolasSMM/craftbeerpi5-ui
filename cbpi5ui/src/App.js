@@ -93,7 +93,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#f5f5f5',
+    // Usa o mesmo background do tema para manter consistência visual
+    backgroundColor: theme.palette.background.paper,
     borderRight: `1px solid ${theme.palette.divider}`,
   },
   drawerPaperClose: {
@@ -106,6 +107,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: theme.spacing(9),
     },
+    // Garante que quando fechado também use o background do tema
+    backgroundColor: theme.palette.background.paper,
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
