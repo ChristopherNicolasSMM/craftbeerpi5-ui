@@ -1,7 +1,7 @@
-import { IconButton } from "@material-ui/core";
-import LockIcon from "@material-ui/icons/Lock";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import SaveIcon from "@material-ui/icons/Save";
+import { IconButton } from "@mui/material";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import SaveIcon from "@mui/icons-material/Save";
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../../App.css";
@@ -14,8 +14,8 @@ import { DashboardContainer } from "./Elements";
 import useKeyPress from "./GlobalKeyPress";
 import { widget_list } from "./widgets/config";
 import { Path } from "./widgets/Path";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 
 export const DashboardContext = createContext({});

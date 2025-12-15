@@ -1,11 +1,11 @@
-import { Button, ButtonGroup } from "@material-ui/core";
-import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import RotateLeftIcon from "@material-ui/icons/RotateLeft";
-import StopIcon from "@material-ui/icons/Stop";
+import { Button, ButtonGroup } from "@mui/material";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+import StopIcon from "@mui/icons-material/Stop";
 import { default as React, useEffect, useState } from "react";
 import { useCBPi } from "../data";
 import { fermenterapi } from "../data/fermenterapi";
-import SkipNextIcon from '@material-ui/icons/SkipNext';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
 
 
 

@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import { TextField } from "@mui/material";
 import { default as React, useState } from "react";
 
 export const BasicData = ({data, setData}) => {

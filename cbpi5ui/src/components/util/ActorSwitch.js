@@ -1,5 +1,5 @@
 
-import { Switch } from "@material-ui/core";
+import { Switch } from "@mui/material";
 import { useCBPi } from "../data";
 
 

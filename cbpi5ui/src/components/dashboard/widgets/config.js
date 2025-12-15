@@ -1,8 +1,8 @@
-import ListIcon from '@material-ui/icons/List';
-import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
-import ShowChartIcon from '@material-ui/icons/ShowChart';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
-import ToggleOffIcon from '@material-ui/icons/ToggleOff';
+import ListIcon from '@mui/icons-material/List';
+import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import SpeedIcon from '@mui/icons-material/Speed';
 import { CBPiCalculatorIcon, CBPiControlIcon, CBPiKettle, CBPiKettle2Icon, CBPiLedIcon, CBPiLiquidIcon, CBPiSensorIcon, CBPiSVGIcon, CBPiTankIcon, CBPiThermometerIcon } from '../../util/icons/CBPiSensorIcon';

@@ -1,8 +1,7 @@
-import { Breadcrumbs, Divider, Link, Paper, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import { Breadcrumbs, Divider, Link, Paper, Typography, Box } from "@mui/material";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useAlert } from "../alert/AlertProvider";
@@ -11,7 +10,7 @@ import { stepapi } from "../data/stepapi";
 import PropsEdit from "../util/PropsEdit";
 import StepTypeSelct from "../util/StepTypeSelect";
 
-const props = [
+const samplePropsConfig = [
   {
     label: "Parameter1",
     type: "number",
@@ -28,47 +27,12 @@ const props = [
   },
 ];
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: "relative",
-  },
-  layout: {
-    width: "auto",
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 600,
-      marginLeft: "auto",
-      marginRight: "auto",
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
-  },
-  stepper: {
-    padding: theme.spacing(3, 0, 5),
-  },
-  buttons: {
-    display: "flex",
-    justifyContent: "flex-end",
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-  },
-}));
+// NOTE: Previously used makeStyles here; migrated to sx props.
 
 const StepForm = () => {
   const history = useHistory();
   const alert = useAlert();
-  const classes = useStyles();
+  
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [props, setProps] = useState({})
@@ -139,7 +103,18 @@ const StepForm = () => {
       </Breadcrumbs>
 
       <Divider />
-      <Paper className={classes.paper}>
+      <Paper
+        sx={(theme) => ({
+          mt: 3,
+          mb: 3,
+          p: 2,
+          [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+            mt: 6,
+            mb: 6,
+            p: 3,
+          },
+        })}
+      >
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <TextField required id="name" label="Name" fullWidth value={name} onChange={(e) => setName(e.target.value)} />
@@ -150,14 +125,14 @@ const StepForm = () => {
 
           <PropsEdit config={propsConfig} data={props} onChange={onChangeProps} />
         </Grid>
-        <div className={classes.buttons}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Button
             variant="contained"
             color="secondary"
             onClick={() => {
               history.push("/mashprofile");
             }}
-            className={classes.button}
+            sx={{ mt: 3, ml: 1 }}
           >
             Cancel
           </Button>
@@ -167,11 +142,11 @@ const StepForm = () => {
             onClick={() => {
               save();
             }}
-            className={classes.button}
+            sx={{ mt: 3, ml: 1 }}
           >
             Save
           </Button>
-        </div>
+        </Box>
       </Paper>
     </>
   );

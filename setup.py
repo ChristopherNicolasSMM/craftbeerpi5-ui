@@ -24,6 +24,6 @@ setup(name='cbpi5ui',
       package_data={
         # If any package contains *.txt or *.rst files, include them:
       '': ['*.txt', '*.rst', '*.yaml'],
-      'cbpi5-ui-plugin': ['*','*.txt', '*.rst', '*.yaml']},
+      'cbpi5ui': ['*','*.txt', '*.rst', '*.yaml']},
       packages=['cbpi5ui'],
      )

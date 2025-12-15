@@ -1,23 +1,23 @@
-import { Slider } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Typography from "@material-ui/core/Typography";
-import CachedIcon from "@material-ui/icons/Cached";
-import DriveEtaIcon from "@material-ui/icons/DriveEta";
-import TrackChangesIcon from "@material-ui/icons/TrackChanges";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
+import { Slider } from "@mui/material";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Typography from "@mui/material/Typography";
+import CachedIcon from "@mui/icons-material/Cached";
+import DriveEtaIcon from "@mui/icons-material/DriveEta";
+import TrackChangesIcon from "@mui/icons-material/TrackChanges";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
 import React, { useContext, useEffect, useState, useMemo } from "react";
 import { useCBPi, useKettle } from "../../data";
 import { useActor } from "../../data/index";
 import { DashboardContext, useModel } from "../DashboardContext";
 import { configapi } from "../../data/configapi";
-import { createTheme , ThemeProvider} from '@material-ui/core/styles';
-import pink from "@material-ui/core/colors/pink";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import pink from "@mui/material/colors/pink";
 
 const theme = createTheme({
   overrides: {

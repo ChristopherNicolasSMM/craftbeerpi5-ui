@@ -1,24 +1,12 @@
-import { Collapse, ListItemIcon, makeStyles, Paper, Tooltip } from "@material-ui/core";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import AppsIcon from "@material-ui/icons/Apps";
+import { Collapse, ListItemIcon, Paper, Tooltip } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import AppsIcon from "@mui/icons-material/Apps";
 import React, { useContext } from "react";
 import "../../App.css";
 import { CBPiGrainIcon, CBPiHopsIcon, CBPiLiquidIcon, CBPiPipeIcon, CBPiYeastIcon } from "../util/icons/CBPiSensorIcon";
 import { DashboardContext } from "./DashboardContext";
-const useStyles = makeStyles((theme) => ({
-  active: {
-    backgroundColor: "red",
-  },
-  icon: {
-    minWidth: "30px",
-  },
-  largeIcon: {
-    width: 60,
-    height: 60,
-  },
-
-}));
+// Using MUI v5 `sx` props instead of makeStyles for lightweight styling
 
 const Icon = ({ icon }) => {
   const WidgetIcon = icon;
@@ -29,7 +17,6 @@ const DashboardSidebarListItem = ({ item }) => {
   const { state, actions } = useContext(DashboardContext);
   const selected = state.selected === item.id;
 
-  const classes = useStyles();
   return (
     <Tooltip title={item.name} placement="right">
     <ListItem
@@ -40,7 +27,7 @@ const DashboardSidebarListItem = ({ item }) => {
         actions.add(item);
       }}
     >
-      <ListItemIcon className={classes.icon}>{item.icon ? <Icon icon={item.icon} /> : null}</ListItemIcon>
+      <ListItemIcon sx={{ minWidth: "30px" }}>{item.icon ? <Icon icon={item.icon} /> : null}</ListItemIcon>
     
     </ListItem></Tooltip>
   );
@@ -49,16 +36,15 @@ const DashboardSidebarListItem = ({ item }) => {
 const DashboardWidgetList = () => {
   const { actions, state } = useContext(DashboardContext);
   const [open, setOpen] = React.useState(true);
-  const classes = useStyles();
   const handleClick = () => {
     setOpen(!open);
   };
 
   return (
-    <Paper >
+    <Paper>
       <List component="nav" disableGutters={true} dense aria-label="">
-        <ListItem disablePadding key="path" button onClick={handleClick} innerDivStyle={{ paddingLeft: 10 }} selected={open}>
-          <ListItemIcon className={classes.icon}>
+        <ListItem disablePadding key="path" button onClick={handleClick} sx={{ pl: 1 }} selected={open}>
+          <ListItemIcon sx={{ minWidth: "30px" }}>
             <AppsIcon />
           </ListItemIcon>
         </ListItem>
@@ -75,7 +61,7 @@ const DashboardWidgetList = () => {
                 actions.add_path();
               }}
             >
-              <ListItemIcon className={classes.icon}><CBPiPipeIcon/></ListItemIcon>
+              <ListItemIcon sx={{ minWidth: "30px" }}><CBPiPipeIcon/></ListItemIcon>
               
             </ListItem>
             

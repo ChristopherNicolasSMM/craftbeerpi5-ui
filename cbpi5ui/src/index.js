@@ -1,5 +1,5 @@
-import { createTheme, ThemeProvider } from '@material-ui/core';
-import pink from "@material-ui/core/colors/pink";
+import CustomThemeProvider from './theme';
+import pink from '@mui/material/colors/pink';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CraftBeerPiApp from './App';
@@ -13,23 +13,9 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 console.log("%cCraftBeerPi 5.0 🍻", "color:#8efa00; background:#000; font-size: 30pt");
 console.log("%cCreated with ♥️ by Manuel Fritsch", "color:#8efa00; background:#000; font-size: 10pt");
-const theme = createTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: "#00FF00"
-    },
-    secondary: pink,
-  },
-  typography: {
-    fontFamily: [
-      'Advent Pro',
-    ].join(','),
-  }  
-});
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <CustomThemeProvider initialMode={'dark'}>
     <AlertProvider>
     <CBPiProvider>
      
@@ -39,7 +25,7 @@ ReactDOM.render(
     
     </CBPiProvider>
     </AlertProvider>
-    </ThemeProvider>
+    </CustomThemeProvider>
     
   </React.StrictMode>,
   document.getElementById('root')

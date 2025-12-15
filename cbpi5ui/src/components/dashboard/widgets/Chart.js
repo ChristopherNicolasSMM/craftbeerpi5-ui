@@ -1,12 +1,12 @@
-import { ClickAwayListener, Dialog, DialogTitle, Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Paper, Popper } from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { ClickAwayListener, Dialog, DialogTitle, Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, Paper, Popper } from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useEffect, useRef, useState } from "react";
 import Plot from "react-plotly.js";
 import { logapi } from "../../data/logapi";
 import { useDraggable, useModel } from "../DashboardContext";
-import RotateLeftIcon from '@material-ui/icons/RotateLeft';
-import AutorenewIcon from '@material-ui/icons/Autorenew';
-import DeleteIcon from "@material-ui/icons/Delete";
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 const ContextMenu = ({ open, handleClose, doRefresh }) => {

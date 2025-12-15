@@ -1,6 +1,6 @@
-import { IconButton } from "@material-ui/core";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import { IconButton } from "@mui/material";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { default as React } from "react";
 
 const SortButton = ({ index, length, id, moveCallback }) => {

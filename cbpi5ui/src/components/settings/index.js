@@ -21,30 +21,11 @@
  * - string: Campo de texto (padrão)
  */
 
-import {
-  IconButton,
-  InputBase,
-  makeStyles,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TextField,
-  Typography,
-  Grid,
-  Chip,
-  Box,
-  Tooltip,
-} from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import RotateLeftIcon from "@material-ui/icons/RotateLeft";
-import SearchIcon from "@material-ui/icons/Search";
-import SaveIcon from "@material-ui/icons/Save";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { IconButton, InputBase, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Grid, Chip, Box, Tooltip, Divider, Button, Switch, FormControlLabel, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+import SearchIcon from "@mui/icons-material/Search";
+import SaveIcon from "@mui/icons-material/Save";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import React, { useEffect, useState } from "react";
 import { useAlert } from "../alert/AlertProvider";
 import { useCBPi } from "../data";
@@ -53,79 +34,10 @@ import ActorSelect from "../util/ActorSelect";
 import KettleSelect from "../util/KettleSelect";
 import FermenterSelect from "../util/FermenterSelect";
 import SensorSelect from "../util/SensorSelect";
+  
 import StepTypeSelect from "../util/StepTypeSelect";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  header: {
-    marginBottom: theme.spacing(3),
-  },
-  title: {
-    fontWeight: 600,
-    color: theme.palette.text.primary,
-  },
-  searchContainer: {
-    display: "flex",
-    alignItems: "center",
-    padding: theme.spacing(1, 2),
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[1],
-    marginBottom: theme.spacing(2),
-  },
-  searchInput: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-    fontSize: "0.95rem",
-  },
-  actionButtons: {
-    display: "flex",
-    gap: theme.spacing(1),
-    alignItems: "center",
-  },
-  tableContainer: {
-    marginTop: theme.spacing(2),
-    boxShadow: theme.shadows[2],
-    borderRadius: theme.shape.borderRadius,
-    overflow: "hidden",
-  },
-  table: {
-    minWidth: 650,
-  },
-  tableHead: {
-    backgroundColor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#f5f5f5',
-  },
-  tableRow: {
-    "&:hover": {
-      backgroundColor: theme.palette.action.hover,
-    },
-    "&.Mui-selected": {
-      backgroundColor: theme.palette.action.selected,
-    },
-  },
-  parameterCell: {
-    fontWeight: 500,
-  },
-  description: {
-    fontSize: "0.75rem",
-    color: theme.palette.text.secondary,
-    marginTop: theme.spacing(0.5),
-    fontStyle: "italic",
-  },
-  changedIndicator: {
-    marginLeft: theme.spacing(1),
-  },
-  emptyState: {
-    padding: theme.spacing(4),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-  statsChip: {
-    marginLeft: theme.spacing(1),
-  },
-}));
+// Converted to MUI v5 `sx` inlined styles
 
 /**
  * Componente SelectBox para dropdowns
@@ -199,7 +111,7 @@ const Settings = () => {
   const { config: state } = useCBPi();
   const [config, setConfig] = useState({});
   const [filter, setFilter] = useState("");
-  const classes = useStyles();
+  // Using MUI v5 `sx` prop for styling instead of makeStyles
   const alert = useAlert();
 
   // Inicializa o estado com as configurações do contexto
@@ -279,11 +191,11 @@ const Settings = () => {
   const filteredCount = Object.keys(filteredData).length;
 
   return (
-    <div className={classes.root}>
+    <Box sx={{ flexGrow: 1 }}>
       {/* Cabeçalho */}
-      <Grid container spacing={2} alignItems="center" className={classes.header}>
+      <Grid container spacing={2} alignItems="center" sx={{ mb: 3 }}>
         <Grid item xs={12} sm={6}>
-          <Typography variant="h4" className={classes.title} gutterBottom>
+          <Typography variant="h4" sx={{ fontWeight: 600, color: 'text.primary' }} gutterBottom>
             Configurações
           </Typography>
           <Typography variant="body2" color="textSecondary">
@@ -298,26 +210,26 @@ const Settings = () => {
                 label={`${changedCount} alteração(ões) pendente(s)`}
                 color="warning"
                 size="small"
-                className={classes.statsChip}
+                sx={{ ml: 1 }}
               />
             )}
             <Chip
               label={`${filteredCount} de ${totalCount} configurações`}
               size="small"
               variant="outlined"
-              className={classes.statsChip}
+              sx={{ ml: 1 }}
             />
           </Box>
         </Grid>
       </Grid>
 
       {/* Barra de busca e ações */}
-      <Grid container spacing={2} alignItems="center" style={{ marginBottom: 16 }}>
+      <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
         <Grid item xs={12} md={8}>
-          <Paper component="form" className={classes.searchContainer} elevation={1}>
+          <Paper component="form" elevation={1} sx={(theme) => ({ display: 'flex', alignItems: 'center', p: theme.spacing(1, 2), borderRadius: theme.shape.borderRadius, backgroundColor: theme.palette.background.paper, boxShadow: theme.shadows[1], mb: theme.spacing(2) })}>
             <SearchIcon color="action" />
             <InputBase
-              className={classes.searchInput}
+              sx={{ ml: 1, flex: 1, fontSize: '0.95rem' }}
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
               placeholder="Buscar configurações..."
@@ -326,7 +238,7 @@ const Settings = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Box className={classes.actionButtons} justifyContent="flex-end">
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }} justifyContent="flex-end">
             <Tooltip title="Descartar alterações">
               <IconButton
                 onClick={reset}
@@ -352,9 +264,9 @@ const Settings = () => {
       </Grid>
 
       {/* Tabela de configurações */}
-      <TableContainer component={Paper} className={classes.tableContainer}>
+      <TableContainer component={Paper} sx={{ mt: 2, boxShadow: 2, borderRadius: 1, overflow: 'hidden' }}>
         {filteredCount === 0 ? (
-          <Box className={classes.emptyState}>
+          <Box sx={{ p: 4, textAlign: 'center', color: 'text.secondary' }}>
             <Typography variant="body1" color="textSecondary">
               Nenhuma configuração encontrada
             </Typography>
@@ -363,8 +275,8 @@ const Settings = () => {
             </Typography>
           </Box>
         ) : (
-          <Table className={classes.table} aria-label="tabela de configurações">
-            <TableHead className={classes.tableHead}>
+          <Table sx={{ minWidth: 650 }} aria-label="tabela de configurações">
+            <TableHead sx={(theme) => ({ backgroundColor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#f5f5f5' })}>
               <TableRow>
                 <TableCell>
                   <Typography variant="subtitle2" style={{ fontWeight: 600 }}>
@@ -387,9 +299,9 @@ const Settings = () => {
                   <TableRow
                     key={key}
                     selected={isChanged}
-                    className={classes.tableRow}
+                    sx={(theme) => ({ '&:hover': { backgroundColor: theme.palette.action.hover }, '&.Mui-selected': { backgroundColor: theme.palette.action.selected } })}
                   >
-                    <TableCell component="th" scope="row" className={classes.parameterCell}>
+                    <TableCell component="th" scope="row" sx={{ fontWeight: 500 }}>
                       <Box display="flex" alignItems="center">
                         <Typography variant="body1">{key}</Typography>
                         {isChanged && (
@@ -397,12 +309,12 @@ const Settings = () => {
                             label="Alterado"
                             size="small"
                             color="warning"
-                            className={classes.changedIndicator}
+                              sx={{ ml: 1 }}
                           />
                         )}
                       </Box>
                       {configItem?.description && (
-                        <Typography className={classes.description}>
+                        <Typography sx={{ fontSize: '0.75rem', color: 'text.secondary', mt: 0.5, fontStyle: 'italic' }}>
                           {configItem.description}
                         </Typography>
                       )}
@@ -422,7 +334,7 @@ const Settings = () => {
           </Table>
         )}
       </TableContainer>
-    </div>
+    </Box>
   );
 };
 

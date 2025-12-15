@@ -1,13 +1,13 @@
-import { makeStyles } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
+import Box from "@mui/material/Box";
+import Alert from "@mui/material/Alert";
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 import React from "react";
 
 import { notificationapi } from "../data/notificationapi";
@@ -41,21 +41,10 @@ export const ActionDialog = ({ item }) => {
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "absolute",
-    bottom: 10,
-    right: 30,
-    "& > * + *": {
-      marginTop: theme.spacing(1),
-    },
-  },
-}));
 
 export const AlertContext = createContext({});
 
 export const AlertProvider = ({ children }) => {
-  const classes = useStyles();
   const [alerts, setAlerts] = useState([]);
 
   const remove = useCallback((id) => {
@@ -93,7 +82,7 @@ export const AlertProvider = ({ children }) => {
     <AlertContext.Provider value={value}>
       {children}
 
-      <div className={classes.root}>
+      <Box sx={{ position: 'absolute', bottom: 10, right: 30, display: 'flex', flexDirection: 'column', gap: 1 }}>
         {alerts.map((a) => {
           if (a?.action?.length > 0) {
             return <ActionDialog key={a.id} item={a} />;
@@ -101,7 +90,7 @@ export const AlertProvider = ({ children }) => {
             return <Alert severity={a.type || "info"} key={a.id}>{a.title} - {a.message}</Alert>;
           }
         })}
-      </div>
+      </Box>
     </AlertContext.Provider>
   );
 };

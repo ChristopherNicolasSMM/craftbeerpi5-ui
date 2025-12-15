@@ -1,9 +1,9 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@material-ui/core"
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material"
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { fermenterrecipeapi } from "../data/fermenterrecipeapi";
 import FermenterSelect from "../util/FermenterSelect";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 
 export const BrewRecipeDialog = ({id, name, open, setOpen}) => {

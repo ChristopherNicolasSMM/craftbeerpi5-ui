@@ -1,29 +1,20 @@
-import { Breadcrumbs, Divider, Link, Paper, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import { Breadcrumbs, Divider, Link, Paper, Typography, Box } from "@mui/material";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import { useTheme } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useCBPi } from "../data";
 import ActorTypeSelect from "../util/ActorTypeSelect";
 import PropsEdit from "../util/PropsEdit";
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: "relative",
-  },
-  layout: {
-    width: "auto",
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 600,
-      marginLeft: "auto",
-      marginRight: "auto",
-    },
-  },
-  paper: {
+// Use theme + sx instead of makeStyles
+
+const ActorForm = () => {
+  const history = useHistory();
+  const theme = useTheme();
+  const paperSx = {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     padding: theme.spacing(2),
@@ -32,23 +23,9 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(6),
       padding: theme.spacing(3),
     },
-  },
-  stepper: {
-    padding: theme.spacing(3, 0, 5),
-  },
-  buttons: {
-    display: "flex",
-    justifyContent: "flex-end",
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-  },
-}));
-
-const ActorForm = () => {
-  const history = useHistory();
-  const classes = useStyles();
+  };
+  const buttonsSx = { display: "flex", justifyContent: "flex-end" };
+  const buttonSx = { mt: 3, ml: 1 };
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const { id } = useParams();
@@ -116,7 +93,7 @@ const ActorForm = () => {
       </Breadcrumbs>
 
       <Divider />
-      <Paper className={classes.paper}>
+      <Paper sx={paperSx}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <TextField required id="name" label="Name" fullWidth value={name} onChange={(e) => setName(e.target.value)} />
@@ -127,14 +104,14 @@ const ActorForm = () => {
 
           <PropsEdit config={propsConfig} data={props} onChange={onChangeProps} />
         </Grid>
-        <div className={classes.buttons}>
+        <Box sx={buttonsSx}>
           <Button
             variant="contained"
             color="secondary"
             onClick={() => {
               history.push("/hardware");
             }}
-            className={classes.button}
+            sx={buttonSx}
           >
             Cancel
           </Button>
@@ -144,11 +121,11 @@ const ActorForm = () => {
             onClick={() => {
               save();
             }}
-            className={classes.button}
+            sx={buttonSx}
           >
             Save
           </Button>
-        </div>
+        </Box>
       </Paper>
     </>
   );

@@ -1,4 +1,4 @@
-import { FormHelperText, InputLabel, MenuItem, Select } from "@material-ui/core";
+import { FormHelperText, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const SelectInput = ({ label, description="", options=[], value, onChange }) => {
 

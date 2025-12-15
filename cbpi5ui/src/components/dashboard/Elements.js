@@ -1,5 +1,5 @@
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useContext, useState, useMemo} from "react";
 import Draggable from "react-draggable";
 import "../../App.css";

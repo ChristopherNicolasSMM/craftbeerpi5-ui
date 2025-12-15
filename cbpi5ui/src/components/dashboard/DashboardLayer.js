@@ -1,11 +1,11 @@
-import { Checkbox, InputAdornment, ListItemSecondaryAction, TextField, Typography } from "@material-ui/core";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import CropSquareIcon from "@material-ui/icons/CropSquare";
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import { Checkbox, InputAdornment, ListItemSecondaryAction, TextField, Typography } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import CropSquareIcon from "@mui/icons-material/CropSquare";
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import React, { useContext, useEffect, useState } from "react";
 import { useActor } from "../data";
 import ActorSelect from "../util/ActorSelect";
@@ -17,7 +17,7 @@ import WidgetSelet from "../util/WidgetSelect";
 import { DashboardContext, useModel } from "./DashboardContext";
 import { widget_list } from "./widgets/config";
 import { Container, Draggable } from "react-smooth-dnd";
-import DragHandleIcon from "@material-ui/icons/DragHandle";
+import DragHandleIcon from "@mui/icons-material/DragHandle";
 import { arrayMove } from "../util/arraymove";
 import { update } from "plotly.js";
 

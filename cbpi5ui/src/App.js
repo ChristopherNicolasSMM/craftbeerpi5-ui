@@ -9,17 +9,10 @@
  * Para adicionar novas rotas, edite src/config/routes.js
  */
 
-import { Container } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import Badge from "@material-ui/core/Badge";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Drawer from "@material-ui/core/Drawer";
-import IconButton from "@material-ui/core/IconButton";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import MenuIcon from "@material-ui/icons/Menu";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import { Container, AppBar, Badge, CssBaseline, Drawer, IconButton, Toolbar, Typography, Box } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useTheme } from '@mui/material/styles';
 import React, { useState } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -34,110 +27,57 @@ const drawerWidth = 280;
 /**
  * Estilos do componente usando Material-UI makeStyles
  */
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    minHeight: "100vh",
-    backgroundColor: theme.palette.background.default,
-  },
-  toolbar: {
-    paddingRight: 24, // Mantém padding direito quando drawer está fechado
-  },
-  toolbarIcon: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#1976d2',
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    boxShadow: theme.shadows[4],
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-    color: 'inherit',
-  },
-  menuButtonHidden: {
-    display: "none",
-  },
-  title: {
-    flexGrow: 1,
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "row",
-  },
-  logo: {
-    marginRight: 12,
-    height: 32,
-    width: "auto",
-  },
-  drawerPaper: {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    // Usa o mesmo background do tema para manter consistência visual
-    backgroundColor: theme.palette.background.paper,
-    borderRight: `1px solid ${theme.palette.divider}`,
-  },
-  drawerPaperClose: {
-    overflowX: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9),
-    },
-    // Garante que quando fechado também use o background do tema
-    backgroundColor: theme.palette.background.paper,
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
-    backgroundColor: theme.palette.background.default,
-  },
-  container: {
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-  },
-  snack: {
-    position: "absolute",
-    bottom: 10,
-    right: 30,
-    "& > * + *": {
-      marginTop: theme.spacing(1),
-    },
-  },
-}));
+// Converted to theme + sx usage — see runtime constants below
 
 /**
  * Componente principal da aplicação
  */
 const CraftBeerPiApp = () => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const rootSx = { display: 'flex', minHeight: '100vh', bgcolor: theme.palette.background.default };
+  const toolbarSx = { pr: '24px' };
+  const toolbarIconSx = { display: 'flex', alignItems: 'center', justifyContent: 'flex-end', p: '0 8px', ...theme.mixins.toolbar };
+  const appBarSx = {
+    zIndex: theme.zIndex.drawer + 1,
+    bgcolor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#1976d2',
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    boxShadow: theme.shadows[4],
+  };
+  const appBarShiftSx = {
+    ml: `${drawerWidth}px`,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  };
+  const menuButtonSx = { mr: 36, color: 'inherit' };
+  const titleSx = { flexGrow: 1, display: 'flex', alignItems: 'center', flexDirection: 'row' };
+  const logoSx = { mr: 1.5, height: 32, width: 'auto' };
+  const drawerPaperSx = {
+    position: 'relative', whiteSpace: 'nowrap', width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    bgcolor: theme.palette.background.paper,
+    borderRight: `1px solid ${theme.palette.divider}`,
+  };
+  const drawerPaperCloseSx = {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: { width: theme.spacing(9) },
+    bgcolor: theme.palette.background.paper,
+  };
+  const contentSx = { flexGrow: 1, height: '100vh', overflow: 'auto', bgcolor: theme.palette.background.default };
+  const containerSx = { pt: 3, pb: 4, pl: 3, pr: 3 };
   // Inicia com o drawer aberto para melhor UX
   const [drawerOpen, setDrawerOpen] = useState(true);
 
@@ -156,7 +96,7 @@ const CraftBeerPiApp = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <Box sx={rootSx}>
       <CssBaseline />
       <Router>
         <Switch>
@@ -164,28 +104,24 @@ const CraftBeerPiApp = () => {
             {/* AppBar - Barra superior */}
             <AppBar 
               position="absolute" 
-              className={`${classes.appBar} ${drawerOpen ? classes.appBarShift : ''}`}
+              sx={{ ...(appBarSx), ...(drawerOpen ? appBarShiftSx : {}) }}
             >
-              <Toolbar className={classes.toolbar}>
+              <Toolbar sx={toolbarSx}>
                 <IconButton
                   edge="start"
                   color="inherit"
                   aria-label="open drawer"
                   onClick={handleDrawerOpen}
-                  className={classes.menuButton}
+                  sx={menuButtonSx}
                 >
                   <MenuIcon />
                 </IconButton>
-                <div className={classes.title}>
-                  <img 
-                    src={logo} 
-                    alt="CraftBeerPi Logo" 
-                    className={classes.logo}
-                  />
+                <Box sx={titleSx}>
+                  <Box component="img" src={logo} alt="CraftBeerPi Logo" sx={logoSx} />
                   <Typography component="h1" variant="h5" color="inherit" noWrap>
                     CraftBeerPi 5.0
                   </Typography>
-                </div>
+                </Box>
                 <IconButton color="inherit">
                   <Badge badgeContent={0} color="secondary">
                     <NotificationsIcon />
@@ -199,22 +135,20 @@ const CraftBeerPiApp = () => {
               variant="persistent"
               open={drawerOpen}
               onClose={handleDrawerClose}
-              classes={{
-                paper: drawerOpen ? classes.drawerPaper : classes.drawerPaperClose,
-              }}
+              sx={{ '& .MuiDrawer-paper': drawerOpen ? drawerPaperSx : drawerPaperCloseSx }}
             >
-              <div className={classes.toolbarIcon}>
+              <Box sx={toolbarIconSx}>
                 <IconButton onClick={handleDrawerClose}>
                   <MenuIcon />
                 </IconButton>
-              </div>
+              </Box>
               <Menu onClose={handleDrawerClose} />
             </Drawer>
 
             {/* Conteúdo principal */}
-            <main className={classes.content}>
-              <div className={classes.appBarSpacer} />
-              <Container maxWidth={false} className={classes.container}>
+            <Box component="main" sx={contentSx}>
+              <Box sx={theme.mixins.toolbar} />
+              <Container maxWidth={false} sx={containerSx}>
                 {/* Renderiza todas as rotas da configuração centralizada */}
                 <Switch>
                   {routes.map((route, index) => {
@@ -234,11 +168,11 @@ const CraftBeerPiApp = () => {
                   })}
                 </Switch>
               </Container>
-            </main>
+            </Box>
           </PrivateRoute>
         </Switch>
       </Router>
-    </div>
+    </Box>
   );
 };
 

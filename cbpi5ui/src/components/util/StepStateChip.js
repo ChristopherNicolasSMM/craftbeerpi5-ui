@@ -1,8 +1,8 @@
-import { Chip } from "@material-ui/core";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
-import CachedIcon from "@material-ui/icons/Cached";
-import ErrorIcon from "@material-ui/icons/Error";
+import { Chip } from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
+import CachedIcon from "@mui/icons-material/Cached";
+import ErrorIcon from "@mui/icons-material/Error";
 
 const StepStateChip = ({ state }) => {
   switch (state) {

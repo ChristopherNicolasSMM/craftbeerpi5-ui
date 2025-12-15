@@ -1,9 +1,8 @@
-import { ButtonGroup, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, List, ListItem, ListItemText } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import { Button, ButtonGroup, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, List, ListItem, ListItemText } from "@mui/material";
 import React, { useMemo, useState } from "react";
 import { useActor, useActorType, useCBPi } from "../../data";
 import { useDraggable, useModel } from "../DashboardContext";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { actorapi } from "../../data/actorapi";
 import PropsEdit from "../../util/PropsEdit";
 import Confetti from "react-dom-confetti";

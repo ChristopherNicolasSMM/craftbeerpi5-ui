@@ -17,15 +17,15 @@
  * - menuOrder: ordem de exibição no menu (menor = mais acima)
  */
 
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import BallotIcon from '@material-ui/icons/Ballot';
-import DeveloperBoardIcon from '@material-ui/icons/DeveloperBoard';
-import SettingsIcon from '@material-ui/icons/Settings';
-import TimelineIcon from '@material-ui/icons/Timeline';
-import PowerIcon from '@material-ui/icons/Power';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import ComputerIcon from '@material-ui/icons/Computer';
-import InfoIcon from '@material-ui/icons/Info';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import BallotIcon from '@mui/icons-material/Ballot';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import SettingsIcon from '@mui/icons-material/Settings';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import PowerIcon from '@mui/icons-material/Power';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import ComputerIcon from '@mui/icons-material/Computer';
+import InfoIcon from '@mui/icons-material/Info';
 // Importações dos componentes
 import About from '../components/about';
 import Upload from '../components/upload';

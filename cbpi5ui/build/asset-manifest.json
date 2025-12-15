@@ -1,18 +1,20 @@
 {
   "files": {
     "main.css": "./static/css/main.940f4214.chunk.css",
-    "main.js": "./static/js/main.a7988aec.chunk.js",
-    "main.js.map": "./static/js/main.a7988aec.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.1d8e6d2f.js",
-    "runtime-main.js.map": "./static/js/runtime-main.1d8e6d2f.js.map",
-    "static/js/2.1c65279e.chunk.js": "./static/js/2.1c65279e.chunk.js",
-    "static/js/2.1c65279e.chunk.js.map": "./static/js/2.1c65279e.chunk.js.map",
-    "static/js/3.ddc79b87.chunk.js": "./static/js/3.ddc79b87.chunk.js",
-    "static/js/3.ddc79b87.chunk.js.map": "./static/js/3.ddc79b87.chunk.js.map",
+    "main.js": "./static/js/main.b884e566.chunk.js",
+    "main.js.map": "./static/js/main.b884e566.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.267528be.js",
+    "runtime-main.js.map": "./static/js/runtime-main.267528be.js.map",
+    "static/css/2.e01802a3.chunk.css": "./static/css/2.e01802a3.chunk.css",
+    "static/js/2.c8c23705.chunk.js": "./static/js/2.c8c23705.chunk.js",
+    "static/js/2.c8c23705.chunk.js.map": "./static/js/2.c8c23705.chunk.js.map",
+    "static/js/3.cd6d4f86.chunk.js": "./static/js/3.cd6d4f86.chunk.js",
+    "static/js/3.cd6d4f86.chunk.js.map": "./static/js/3.cd6d4f86.chunk.js.map",
     "index.html": "./index.html",
+    "static/css/2.e01802a3.chunk.css.map": "./static/css/2.e01802a3.chunk.css.map",
     "static/css/main.940f4214.chunk.css.map": "./static/css/main.940f4214.chunk.css.map",
-    "static/js/2.1c65279e.chunk.js.LICENSE.txt": "./static/js/2.1c65279e.chunk.js.LICENSE.txt",
-    "static/js/main.a7988aec.chunk.js.LICENSE.txt": "./static/js/main.a7988aec.chunk.js.LICENSE.txt",
+    "static/js/2.c8c23705.chunk.js.LICENSE.txt": "./static/js/2.c8c23705.chunk.js.LICENSE.txt",
+    "static/js/main.b884e566.chunk.js.LICENSE.txt": "./static/js/main.b884e566.chunk.js.LICENSE.txt",
     "static/media/CBPi_logo.2fc3a7bc.svg": "./static/media/CBPi_logo.2fc3a7bc.svg",
     "static/media/cbpi.f1a4ae59.png": "./static/media/cbpi.f1a4ae59.png",
     "static/media/cbpi_no_border.5446caa7.png": "./static/media/cbpi_no_border.5446caa7.png",
@@ -22,9 +24,10 @@
     "static/media/tank2.891ce170.svg": "./static/media/tank2.891ce170.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1d8e6d2f.js",
-    "static/js/2.1c65279e.chunk.js",
+    "static/js/runtime-main.267528be.js",
+    "static/css/2.e01802a3.chunk.css",
+    "static/js/2.c8c23705.chunk.js",
     "static/css/main.940f4214.chunk.css",
-    "static/js/main.a7988aec.chunk.js"
+    "static/js/main.b884e566.chunk.js"
   ]
 }

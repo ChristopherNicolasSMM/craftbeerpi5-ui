@@ -1,11 +1,5 @@
-import { Button } from "@material-ui/core";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import IconButton from "@material-ui/core/IconButton";
-import SaveIcon from "@material-ui/icons/Save";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton } from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
 import React from "react";
 
 const FermenterSaveDialog = ({ btnText, title, message, callback, fermenterid, id }) => {

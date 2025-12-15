@@ -1,4 +1,4 @@
-import { TextField, Typography } from "@material-ui/core";
+import { TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDraggable, useModel } from "../DashboardContext";
 

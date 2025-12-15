@@ -59,7 +59,7 @@ Guia passo a passo focado especificamente em:
 
 Veja o guia completo em [ADICIONAR_PAGINAS.md](./ADICIONAR_PAGINAS.md)
 
-### Para Executar o Projeto
+### Para Executar o ProjetoR
 
 1. Instale as dependências: `npm install` (na pasta `cbpi5ui/`)
 2. Execute em desenvolvimento: `npm start`

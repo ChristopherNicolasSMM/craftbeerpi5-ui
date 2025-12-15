@@ -1,16 +1,17 @@
-import { Button, Divider, IconButton, makeStyles } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Typography from "@material-ui/core/Typography";
-import AddIcon from "@material-ui/icons/Add";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import { Button, Divider, IconButton } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
+import AddIcon from "@mui/icons-material/Add";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { default as React, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useCBPi } from "../data";
@@ -22,16 +23,12 @@ import MashControl from "../util/MashControl";
 import StepStateChip from "../util/StepStateChip";
 import SortButton from "./SortButton";
 
-const useStyles = makeStyles((theme) => ({
-  table: {},
-  paper: {
-    padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
-  },
-}));
+// Use theme + sx instead of makeStyles
 
 const MashProfile = () => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const paperSx = { padding: theme.spacing(2), color: theme.palette.text.secondary };
+  const tableSx = {};
   const { state } = useCBPi();
   const history = useHistory();
   const [data, setData] = useState([]);
@@ -108,7 +105,7 @@ const MashProfile = () => {
 
       <Grid container spacing={3}>
         <Grid item sm={12}>
-          <Paper className={classes.paper}>
+          <Paper sx={paperSx}>
             <Header title="Profile">
               <div style={{ display: "flex" }}>
                 <MashControl />
@@ -118,7 +115,7 @@ const MashProfile = () => {
               </div>
             </Header>
             <TableContainer size="small">
-              <Table className={classes.table} dense table size="small" aria-label="simple table">
+              <Table sx={tableSx} dense size="small" aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell></TableCell>

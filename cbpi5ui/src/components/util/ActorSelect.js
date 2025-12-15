@@ -1,6 +1,6 @@
-import { FormHelperText, InputLabel } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
+import { FormHelperText, InputLabel } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import { useContext } from "react";
 import { CBPiContext } from "../data";
 

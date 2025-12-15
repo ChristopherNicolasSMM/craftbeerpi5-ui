@@ -1,8 +1,8 @@
-import { Breadcrumbs, Divider, Link, Paper, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import { Breadcrumbs, Divider, Link, Paper, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import { makeStyles } from "@mui/styles";
+import TextField from "@mui/material/TextField";
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useAlert } from "../alert/AlertProvider";

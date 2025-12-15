@@ -1,15 +1,14 @@
-import { Button, IconButton, Grid, Typography, Divider, makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
+import { Button, IconButton, Grid, Typography, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, InputLabel, Select, MenuItem } from '@mui/material';
 import React, { useEffect, useState } from "react";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import InputLabel from '@material-ui/core/InputLabel';
+// moved MenuItem, Select and InputLabel to the @mui/material import above
 import { systemapi } from "../data/systemapi"
 import RestartDialog from "../util/RestartDialog";
 import ShutdownDialog from "../util/ShutDownDialog"; // Correct include
-import SaveIcon from "@material-ui/icons/Save";
-import RestoreIcon from '@material-ui/icons/Restore';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import SaveIcon from '@mui/icons-material/Save';
+import RestoreIcon from '@mui/icons-material/Restore';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
+import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,

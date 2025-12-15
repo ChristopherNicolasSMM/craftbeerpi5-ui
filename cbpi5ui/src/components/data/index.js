@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import axios from "axios";
 import CBPiWebSocket from "./websocket";
 import { actorapi } from "./actorapi";
-import { useEventCallback } from "@material-ui/core";
+import { unstable_useEventCallback as useEventCallback } from "@mui/utils";
 import { useAlert } from "../alert/AlertProvider";
 import { kettleapi } from "./kettleapi";
 import { fermenterapi } from "./fermenterapi";

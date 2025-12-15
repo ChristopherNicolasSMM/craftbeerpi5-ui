@@ -1,7 +1,7 @@
-import { Divider, Grid, IconButton, Typography } from "@material-ui/core";
-import AutorenewIcon from "@material-ui/icons/Autorenew";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+import { Divider, Grid, IconButton, Typography } from "@mui/material";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useState } from "react";
 import Plot from "react-plotly.js";
 import { useSensor } from "../data";

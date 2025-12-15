@@ -1,7 +1,7 @@
-import { Button, Divider, IconButton, makeStyles, Paper } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import AddIcon from "@material-ui/icons/Add";
+import { Button, Divider, IconButton, Paper } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Grid, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Header from "../util/Header";

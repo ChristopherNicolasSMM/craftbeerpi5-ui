@@ -1,14 +1,14 @@
-import { makeStyles } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+// Use `sx` prop instead of makeStyles
+import IconButton from '@mui/material/IconButton';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CBPiContext } from '../data';
@@ -17,14 +17,9 @@ import ActorButton from '../util/ActorButton';
 import ActorSwitch from '../util/ActorSwitch';
 import DeleteDialog from '../util/DeleteDialog';
 
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-});
 
 const ActorTable = () => {
-    const classes = useStyles();
+    const tableSx = { minWidth: 650 };
     const history = useHistory();
     const { state, actions } = useContext(CBPiContext);
 
@@ -37,7 +32,7 @@ const ActorTable = () => {
     return (
         <>
             <TableContainer component={Paper}>
-                <Table className={classes.table} dense={true} table size="small" aria-label="simple table">
+                <Table sx={tableSx} dense={true} size="small" aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>

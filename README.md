@@ -80,8 +80,10 @@ python3 setup.py sdist
 
 Para instruções detalhadas, consulte:
 - [Guia de Execução e Build](./cbpi5ui/src/docs/GUIA_EXECUCAO_BUILD.md) - Guia completo
+- [Build Windows e Tema (guia curto)](./cbpi5ui/docs/BUILD_WINDOWS.md) - Build Windows e localização de tema
 - [Changelog V4 para V5](./cbpi5ui/src/docs/CHANGELOG_V4_TO_V5.md) - Mudanças e melhorias
 - [Como Adicionar Páginas](./cbpi5ui/src/docs/ADICIONAR_PAGINAS.md) - Guia de desenvolvimento
+ - [Checklist Migração MUI v4 -> v5](./cbpi5ui/src/docs/MIGRATE_MUI.md) - Guia rápido de migração
 
 ## 🌐 Acesso
 
@@ -127,3 +129,9 @@ Versão atual: 0.2.2.a3 (ver `cbpi5ui/version.py`)
 ## 🤝 Contribuindo
 
 Consulte a documentação em `cbpi5ui/src/docs/` para guias de desenvolvimento.
+
+## 🎨 Estilos e Tema
+
+- O tema global está centralizado em: `cbpi5ui/src/theme/index.js`.
+- Para alterar a paleta, tipografia ou modo claro/escuro, edite esse arquivo.
+- Muitos componentes ainda usam `makeStyles` (compatibilidade via `@mui/styles`). Para uma migração completa, prefira `sx` ou `styled` e migrar imports para `@mui/*`.

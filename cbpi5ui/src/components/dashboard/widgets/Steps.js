@@ -1,19 +1,11 @@
-import { Button, ButtonGroup, Divider, Grid, List, Paper, Typography } from "@material-ui/core";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import { makeStyles } from "@material-ui/core/styles";
-import CachedIcon from "@material-ui/icons/Cached";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import ErrorIcon from "@material-ui/icons/Error";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
-import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
-import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import { Button, ButtonGroup, Divider, Grid, List, Paper, Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import CachedIcon from "@mui/icons-material/Cached";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ErrorIcon from "@mui/icons-material/Error";
+import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
+import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { default as React, useContext, useEffect, useState } from "react";
 import { useCBPi } from "../../data";
 import { stepapi } from "../../data/stepapi";
@@ -23,19 +15,9 @@ import MashControl from "../../util/MashControl";
 import PropsEdit from "../../util/PropsEdit";
 import SensorName from "../../util/SensorName";
 import { DashboardContext, useDraggable, useModel } from "../DashboardContext";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { useHistory } from "react-router-dom";
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(1),
-      marginLeft: theme.spacing(0),
-      marginRight: theme.spacing(0),
-      marginBottom: theme.spacing(1),
-      padding: theme.spacing(1),
-    },
-  },
-}));
+// Use `sx` with the theme breakpoints instead of makeStyles
 
 const StepProps = ({ config, data }) => {
   if (!config) {
@@ -157,7 +139,16 @@ function StepDetailsDialog(props) {
   const { onClose, selectedValue, open, item } = props;
   const [actions, setActions] = useState([]);
   const [type, setType] = React.useState({});
-  const classes = useStyles();
+  const theme = useTheme();
+  const paperSx = {
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(1),
+      marginLeft: theme.spacing(0),
+      marginRight: theme.spacing(0),
+      marginBottom: theme.spacing(1),
+      padding: theme.spacing(1),
+    },
+  };
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -171,7 +162,7 @@ function StepDetailsDialog(props) {
   return (
     <Dialog fullWidth onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
       <DialogContent>
-        <Paper className={classes.paper}>
+        <Paper sx={paperSx}>
           <Typography variant="h4" gutterBottom>
             {item.name}
           </Typography>
@@ -183,7 +174,7 @@ function StepDetailsDialog(props) {
           </Grid>
         </Paper>
         <Divider />
-        <Paper className={classes.paper}>
+        <Paper sx={paperSx}>
           <Typography variant="h6" gutterBottom>
             Actions
           </Typography>

@@ -1,10 +1,10 @@
-import { Divider, Grid, Paper, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Divider, Grid, Paper, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import React from "react";
 import logo from "../../images/cbpi.png";
 import { useCBPi } from "../data";
 import paypal_logo from './paypal.png';
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {

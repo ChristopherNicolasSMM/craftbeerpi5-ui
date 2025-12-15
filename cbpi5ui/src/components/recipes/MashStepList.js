@@ -1,13 +1,13 @@
-import { Accordion, AccordionDetails, AccordionSummary, Grid, Hidden, IconButton, TextField, Typography } from "@material-ui/core";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
-import DeleteIcon from "@material-ui/icons/Delete";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Hidden, IconButton, TextField, Typography } from "@mui/material";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useEffect, useState } from "react";
 import { useCBPi } from "../data";
 import PropsEdit from "../util/PropsEdit";
 import StepTypeSelect from "../util/StepTypeSelect";
-import ReportProblemIcon from '@material-ui/icons/ReportProblem';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 const MashStepLine = ({ item, items, setItems, onSelectType, handleInput, handleInputProps, index, remove }) => {
   const { state } = useCBPi();
