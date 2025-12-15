@@ -380,7 +380,7 @@ export const Dashboard = ({ width, height , fixdash}) => {
           ref={parentRef}
           style={{
             position: "relative",
-            backgroundColor: "#272227",
+            backgroundColor: "var(--cbpi-bg)",
             width,
             height,
           }}

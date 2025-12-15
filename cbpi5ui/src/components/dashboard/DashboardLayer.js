@@ -87,8 +87,8 @@ const DashboardLayer = () => {
           width: 200,
           overflow: "hidden",
           fontFamily: "JetBrains Mono",
-          backgroundColor: "#2c282e",
-          color: "#fff",
+          backgroundColor: "var(--cbpi-paper)",
+          color: "var(--cbpi-text)",
           borderRadius: 5,
         }}
       >

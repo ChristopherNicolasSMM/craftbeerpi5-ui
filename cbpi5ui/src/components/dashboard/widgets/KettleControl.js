@@ -16,51 +16,7 @@ import { useCBPi, useKettle } from "../../data";
 import { useActor } from "../../data/index";
 import { DashboardContext, useModel } from "../DashboardContext";
 import { configapi } from "../../data/configapi";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import pink from "@mui/material/colors/pink";
-
-const theme = createTheme({
-  overrides: {
-    palette:{
-      type: 'dark',
-    primary: {
-      main: "#00FF00"
-    },
-    secondary: pink,
-    },
-    MuiButton: {
-      outlinedPrimary:{
-        color: "#00FF00",
-        border: "1px solid #00FF00"
-      },
-      containedPrimary:{
-        color: "#00FF00",
-        backgroundColor: "#00FF00",
-        '&:hover': {
-          backgroundColor: "#00B200",
-          // Reset on touch devices, it doesn't add specificity
-          '@media (hover: none)': {
-            backgroundColor: "#00FF00"
-          }}
-      },
-      iconSizeSmall: {
-        "& > *:first-child": {
-          fontSize: 20
-        }
-      },
-      iconSizeMedium: {
-        "& > *:first-child": {
-          fontSize: 25
-        }
-      },
-      iconSizeLarge: {
-        "& > *:first-child": {
-          fontSize: 32
-        }
-      }
-    },
-  },
-});
+// Use global theme provided by CustomThemeProvider; avoid local theme overrides
 
 
 const TargetTempDialog = ({ onClose, kettle, open }) => {

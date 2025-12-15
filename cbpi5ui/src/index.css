@@ -3,8 +3,8 @@ body {
   font-family: "JetBrains Mono";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #272227;
-  color: #fff;
+  background-color: var(--cbpi-bg);
+  color: var(--cbpi-text);
   touch-action: none;
 }
 

@@ -276,7 +276,7 @@ const Settings = () => {
           </Box>
         ) : (
           <Table sx={{ minWidth: 650 }} aria-label="tabela de configurações">
-            <TableHead sx={(theme) => ({ backgroundColor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#f5f5f5' })}>
+            <TableHead sx={(theme) => ({ backgroundColor: theme.palette.action.hover })}>
               <TableRow>
                 <TableCell>
                   <Typography variant="subtitle2" style={{ fontWeight: 600 }}>

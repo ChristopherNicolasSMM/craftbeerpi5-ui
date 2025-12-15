@@ -39,7 +39,7 @@ const CraftBeerPiApp = () => {
   const toolbarIconSx = { display: 'flex', alignItems: 'center', justifyContent: 'flex-end', p: '0 8px', ...theme.mixins.toolbar };
   const appBarSx = {
     zIndex: theme.zIndex.drawer + 1,
-    bgcolor: theme.palette.mode === 'dark' ? '#1a1a1a' : '#1976d2',
+    bgcolor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
